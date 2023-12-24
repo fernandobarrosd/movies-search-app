@@ -38,10 +38,15 @@ android {
 
 dependencies {
     val navVersion = "2.7.6"
+    val retrofitVersion = "2.9.0"
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-jackson:$retrofitVersion")
 
 
     // Android
