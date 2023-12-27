@@ -17,6 +17,6 @@ interface MovieService {
     fun searchMovies(@Query("query") query: String,
                     @Query("include_adult") includeAdult: Boolean = false) : Call<TMDBAPIResponseMovieList>
 
-    @GET("find/movie/{external_id}")
-    fun findByID(@Path("external_id") movieID: Long) : Call<Movie>
+    @GET("movie/{movie_id}")
+    fun findByID(@Path("movie_id") movieID: Long) : Call<Movie>
 }
