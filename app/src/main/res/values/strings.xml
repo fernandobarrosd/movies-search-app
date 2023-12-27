@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Movies Search</string>
+    <string name="movie_title_default_text">Transformers</string>
+    <string name="movie_release_year_default_text">2002</string>
+    <string name="movie_sinopse_default_text">Um filme sobre robos gigantes\nque vieram de um planeta chamado cibertron</string>
 </resources>
