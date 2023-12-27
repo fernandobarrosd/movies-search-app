@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.fernando.moviessearch.databinding.FragmentHomeBinding
 import com.fernando.moviessearch.models.Movie
 import com.fernando.moviessearch.ui.adapters.MovieAdapter
+import com.fernando.moviessearch.ui.adapters.MovieSkeletonAdapter
 import com.fernando.moviessearch.ui.utils.FragmentViewBinding
 import com.fernando.moviessearch.ui.viewModels.MoviesViewModel
 
@@ -23,6 +24,8 @@ class HomeFragment : FragmentViewBinding<FragmentHomeBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+        setRecyclerViewWithMovieSkeletonAdapter()
         setMovies()
         initListeners()
         initObservables()
@@ -35,6 +38,7 @@ class HomeFragment : FragmentViewBinding<FragmentHomeBinding>() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                setRecyclerViewWithMovieSkeletonAdapter()
                 moviesViewModel.searchMovies(newText!!)
                 return true
             }
@@ -46,9 +50,17 @@ class HomeFragment : FragmentViewBinding<FragmentHomeBinding>() {
         moviesViewModel.setMovies()
     }
 
+    private fun setRecyclerViewWithMovieSkeletonAdapter() {
+        binding.moviesRecyclerView.adapter = MovieSkeletonAdapter()
+    }
+
+    private fun setRecyclerViewWithMovieAdapter(movies: List<Movie>) {
+        binding.moviesRecyclerView.adapter = MovieAdapter(movies, this)
+    }
+
     private fun initObservables() {
         moviesViewModel.allMovies.observe(requireActivity()) { movies ->
-            initRecyclerView(movies)
+            setRecyclerViewWithMovieAdapter(movies)
         }
 
         moviesViewModel.hasError.observe(requireActivity()) { hasError ->
@@ -66,11 +78,10 @@ class HomeFragment : FragmentViewBinding<FragmentHomeBinding>() {
 
     private fun isOrientation(orientation: Int): Boolean = resources.configuration.orientation == orientation
 
-    private fun initRecyclerView(movies: List<Movie>) {
+    private fun initRecyclerView() {
         binding.moviesRecyclerView.also {
             val cols = if (isOrientation(Configuration.ORIENTATION_LANDSCAPE)) { 5 } else { 2 }
             it.layoutManager = GridLayoutManager(context, cols)
-            it.adapter = MovieAdapter(movies, this)
         }
     }
 }
