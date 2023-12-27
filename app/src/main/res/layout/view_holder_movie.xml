@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/white"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="10dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/moviePoster_imageView"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            tools:ignore="ContentDescription"
+            android:minHeight="100dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:minWidth="100dp" />
+
+        <TextView
+            android:id="@+id/movieTitle_textView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="16sp"
+            android:text="Transformers"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/movieReleaseYear_textView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="2002"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/viewMore_Button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="View more"
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+</androidx.cardview.widget.CardView>
