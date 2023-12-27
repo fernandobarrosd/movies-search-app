@@ -34,9 +34,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
     val navVersion = "2.7.6"
     val retrofitVersion = "2.9.0"
 
